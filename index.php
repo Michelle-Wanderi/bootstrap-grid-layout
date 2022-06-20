@@ -1,3 +1,20 @@
+<?php
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "web2";
+
+$conn = mysqli_connect($server,$username,$password,$database);
+if($conn)
+{
+    echo "Connection success.";
+}
+else{
+    echo "Error occurred.";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,22 +75,43 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, officiis vitae exercitationem labore possimus nesciunt blanditiis architecto mollitia deserunt ullam.</p>
                                 <button class="btn btn-primary">View Details</button>
                     </div>
-
-
-
-
-
-
-
-
-
-
     </div>
+</div>
+
+<div class="container">
+    <div class="row pt-5">
+<form action="index.php" method= "POST">
+    <div class="row">
+        <div class= "mb-3 col-lg-6">
+        <label for="firstname" class="form-label">First Name</label>
+        <input type="text" class="form-control" placeholder="Enter your First Name">
+        </div>
+    <div class= "mb-3 col-lg-6">
+    <label for="lastname" class="form-label">Last Name</label>
+    <input type="text" class="form-control" placeholder="Enter your Last Name">
+</div>   
+
+ <div class="row">
+    <div class= "mb-3 col-lg-6 col-md-6">
+    <label for="phonenumber" class="form-label">Phone Number</label>
+    <input type="tel" class="form-control" placeholder="Enter your Phone Number">
+</div>
+    <div class= "mb-3 col-lg-6 col-md-6">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" placeholder="Enter your Email">
+</div>
+</div>
+
+<div class="row">
+    <div class= "mb-3 col-lg-6 col-md-6">
+    <label for="message" class="form-label">Enter Your Message</label>
+        <textarea name="Enter your Message" id="" cols="30" rows="5" class="form-control"></textarea>
+</div>
+</div>
+<button type="submit" class ="btn btn-primary">Send a Message</button>
+</form>
+
     
-
-
-
-
 </div>
 
     <script src="bootstrap-5.2.0-beta1-dist/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js"></script>
