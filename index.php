@@ -5,14 +5,27 @@ $password = "";
 $database = "web2";
 
 $conn = mysqli_connect($server,$username,$password,$database);
-if($conn)
-{
-    echo "Connection success.";
-}
-else{
-    echo "Error occurred.";
-}
 
+if(isset($_POST['submitButton']) )
+{
+    // 1.fetch form data 
+    $firstName = $_POST['firstname'];
+    $lastName = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phonenumber'];
+    $message = $_POST['message'];
+    // 2. submit form data 
+    $insertData = mysqli_query($conn, "INSERT INTO 
+    contactus(firstname,lastname,phonenumber,email,message)
+    vALUES('$firstName','$lastName','$phone','$email','$message')");
+    if($insertData)
+    {
+        echo "Data submitted succesfully";
+    }
+    else{
+        echo "Error occurred";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +40,8 @@ else{
 </head>
 <body>
     <!-- Navbar starts here -->
-    <nav class="navbar navbar-expand-lg bg-light fixed-top shadow">
+    <!-- <nav class="navbar navbar-expand-lg bg-light fixed-top shadow"> -->
+          <!-- Navbar ends here -->
         <div class="container-fluid">
            <a href="#" class="navbar-brand">Zalego Academy</a>
            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#menus">
@@ -44,7 +58,7 @@ else{
            </div>
         </div>
     </nav>
-    <!-- Navbar ends here -->
+  
 
     <main class="p-5  bg-light text-black mb-4"><br><br>
     <h1>Welcome,Michelle Wanderi</h1>
@@ -83,32 +97,32 @@ else{
 <form action="index.php" method= "POST">
     <div class="row">
         <div class= "mb-3 col-lg-6">
-        <label for="firstname" class="form-label">First Name</label>
-        <input type="text" class="form-control" placeholder="Enter your First Name">
+        <label for="firstname"  class="form-label">First Name</label>
+        <input type="text" name="firstname" class="form-control" placeholder="Enter your First Name">
         </div>
     <div class= "mb-3 col-lg-6">
     <label for="lastname" class="form-label">Last Name</label>
-    <input type="text" class="form-control" placeholder="Enter your Last Name">
+    <input type="text" name="lastname" class="form-control" placeholder="Enter your Last Name">
 </div>   
 
  <div class="row">
     <div class= "mb-3 col-lg-6 col-md-6">
     <label for="phonenumber" class="form-label">Phone Number</label>
-    <input type="tel" class="form-control" placeholder="Enter your Phone Number">
+    <input type="tel"  name="phonenumber" class="form-control" placeholder="Enter your Phone Number">
 </div>
     <div class= "mb-3 col-lg-6 col-md-6">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" placeholder="Enter your Email">
+    <input type="email" name="email" class="form-control" placeholder="Enter your Email">
 </div>
 </div>
 
 <div class="row">
     <div class= "mb-3 col-lg-6 col-md-6">
     <label for="message" class="form-label">Enter Your Message</label>
-        <textarea name="Enter your Message" id="" cols="30" rows="5" class="form-control"></textarea>
+        <textarea placeholder="Enter your Message" name="message" id="" cols="30" rows="5" class="form-control"></textarea>
 </div>
 </div>
-<button type="submit" class ="btn btn-primary">Send a Message</button>
+<button type="submit" name="submitButton" class ="btn btn-primary">Send a Message</button>
 </form>
 
     
